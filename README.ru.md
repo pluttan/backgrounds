@@ -1,14 +1,9 @@
-![Header](header.png)
-
 <div align="center">
 
 # Backgrounds
 
 **Коллекция обоев с Telegram-ботом для сортировки**
 
-[![License](https://img.shields.io/badge/license-MIT-2C2C2C?style=for-the-badge&labelColor=1E1E1E)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3-2C2C2C?style=for-the-badge&logo=python&labelColor=1E1E1E)]()
-[![Telegram](https://img.shields.io/badge/telegram-bot-2C2C2C?style=for-the-badge&logo=telegram&labelColor=1E1E1E)]()
 
 </div>
 
@@ -38,18 +33,18 @@
 
 </div>
 
-## ■ Repository Structure
+## ■ Как это работает
 
 ```
-backgrounds/
-├── src/
-│   ├── sort_bot.py      # Telegram sorting bot (aiogram + Telethon)
-│   └── gen_session.py   # Telethon string session generator
-├── images/              # wallpaper collection (sorted into category subfolders)
-└── .env.example         # config template
+1. Настройте .env с BOT_TOKEN (и опционально API_ID/API_HASH/TG_SESSION для доступа к каналам).
+2. При необходимости запустите gen_session.py для получения строковой сессии Telethon для загрузки из каналов.
+3. Запустите бота, указав папку; отправьте /start в Telegram, чтобы начать просмотр.
+4. Бот показывает каждое обои с кнопками — отправить в именованную категорию, пропустить или удалить.
+5. Отсортированные изображения перемещаются в соответствующие подпапки; удалённые попадают в .trash и могут быть восстановлены позже.
+6. Новые обои можно импортировать в любое время через импортёр из GitHub-репозитория или загрузчик из Telegram-канала.
 ```
 
-## ■ Запуск
+## ■ Использование
 
 ```bash
 # 1. Настройте .env (BOT_TOKEN обязателен; API_ID/API_HASH/TG_SESSION для каналов;
@@ -63,6 +58,17 @@ python src/gen_session.py
 python src/sort_bot.py [path_to_folder]
 ```
 
-## ■ License
+## ■ Структура репозитория
+
+```
+backgrounds/
+├── src/
+│   ├── sort_bot.py      # Telegram-бот сортировки (aiogram + Telethon)
+│   └── gen_session.py   # генератор строковой сессии Telethon
+├── images/              # коллекция обоев (отсортирована по подпапкам-категориям)
+└── .env.example         # шаблон конфигурации
+```
+
+## ■ Лицензия
 
 MIT © [pluttan](https://github.com/pluttan)
